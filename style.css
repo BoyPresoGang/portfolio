@@ -127,3 +127,6 @@ footer { border-top: 1px solid var(--border); padding: 25px; text-align: center;
   .about-facts { gap: 18px; }
   .about-facts strong { font-size: 1.2rem; }
 }
+
+.hero-title { margin-top: 22px; color: #f3eef0; font-weight: 800; font-size: 1.15rem; }
+.hero-degree { margin-top: 2px; color: #bd667e; font-size: .84rem; font-weight: 600; }
