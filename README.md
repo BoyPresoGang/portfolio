@@ -1,4 +1,4 @@
-Portfolio V15
+Portfolio V16
 
 # Rommel John M. Agolito — Portfolio
 
@@ -29,4 +29,11 @@ https://github.com/BoyPresoGang
 - Kept the existing CV download, contact details, project galleries, education, and skills from V11.
 
 
-V15 updates: fixed education timeline dot/date overlap and added subtle hover, glow, and sweep effects while keeping the visual style restrained.
+V16 updates: fixed education timeline dot/date overlap and added subtle hover, glow, and sweep effects while keeping the visual style restrained.
+
+
+## V16 additions
+- Added a What I Do section for web, mobile, desktop, and system development.
+- Added restrained project-card hover polish and screenshot cues.
+- Refined the portfolio assistant greeting and quick prompts.
+- Added availability indicators in the hero and contact section.
