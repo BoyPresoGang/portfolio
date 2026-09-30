@@ -6,6 +6,7 @@ A responsive personal portfolio built with HTML, CSS, and JavaScript.
 - `index.html` — portfolio content and structure
 - `style.css` — design and responsive layout
 - `script.js` — navigation and scroll animations
+- `profile.jpg` — profile photo
 
 ## Before publishing
 Replace:
