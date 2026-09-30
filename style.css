@@ -184,3 +184,10 @@ footer { border-top: 1px solid var(--border); padding: 25px; text-align: center;
   .education-year { padding-top: 0; text-align: left; }
   .education-card::before { left: -27px; top: 23px; }
 }
+
+/* V11 contact + CV actions */
+.hero-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; }
+@media (max-width: 600px) {
+  .hero-actions .btn { width: 100%; }
+}
