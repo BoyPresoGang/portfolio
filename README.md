@@ -15,3 +15,10 @@ HTML, CSS, JavaScript
 
 ## GitHub
 https://github.com/BoyPresoGang
+
+
+### V12 – Portfolio Assistant
+- Added a floating burgundy-themed portfolio assistant in the bottom-right corner.
+- Assistant answers from a fixed portfolio knowledge base with no API key or backend.
+- Added suggested questions, typing animation, responsive/mobile layout, and accessible open/close controls.
+- Kept the existing CV download, contact details, project galleries, education, and skills from V11.

@@ -311,6 +311,44 @@
     </section>
   </main>
 
+  <!-- Portfolio Assistant -->
+  <div class="portfolio-assistant" id="portfolioAssistant">
+    <button class="assistant-launcher" id="assistantLauncher" type="button" aria-label="Open portfolio assistant" aria-expanded="false">
+      <span class="assistant-launcher-icon">✦</span>
+      <span class="assistant-pulse" aria-hidden="true"></span>
+    </button>
+
+    <section class="assistant-panel" id="assistantPanel" aria-label="Portfolio assistant" aria-hidden="true">
+      <div class="assistant-header">
+        <div class="assistant-brand">
+          <div class="assistant-avatar">✦</div>
+          <div>
+            <strong>Portfolio Assistant</strong>
+            <span><i></i> Online · Knows this portfolio</span>
+          </div>
+        </div>
+        <button class="assistant-close" id="assistantClose" type="button" aria-label="Close portfolio assistant">×</button>
+      </div>
+
+      <div class="assistant-messages" id="assistantMessages" aria-live="polite">
+        <div class="assistant-message assistant-message-bot">
+          <span>Hi! I'm Rommel's portfolio assistant. Ask me about his projects, skills, education, or contact details.</span>
+        </div>
+        <div class="assistant-suggestions" id="assistantSuggestions">
+          <button type="button" data-question="What projects has Rommel built?">Projects</button>
+          <button type="button" data-question="What technologies does Rommel use?">Skills</button>
+          <button type="button" data-question="What is Rommel's education?">Education</button>
+          <button type="button" data-question="How can I contact Rommel?">Contact</button>
+        </div>
+      </div>
+
+      <form class="assistant-input" id="assistantForm">
+        <input id="assistantInput" type="text" autocomplete="off" placeholder="Ask about Rommel..." aria-label="Ask the portfolio assistant" maxlength="240">
+        <button type="submit" aria-label="Send message">↑</button>
+      </form>
+    </section>
+  </div>
+
   <footer>
     <p>© <span id="year"></span> Rommel John M. Agolito. Built with HTML, CSS & JavaScript.</p>
   </footer>
