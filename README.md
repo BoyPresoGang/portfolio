@@ -1,5 +1,8 @@
 # Rommel John M. Agolito — Portfolio
 
+V13 updates: cleaned and spaced skill tags for readability and replaced the generic RA navbar mark with a personal R monogram.
+# Rommel John M. Agolito — Portfolio
+
 Personal IT portfolio website for Rommel John M. Agolito.
 
 ## Included

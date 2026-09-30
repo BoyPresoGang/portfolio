@@ -27,8 +27,9 @@ a { color: inherit; text-decoration: none; }
   backdrop-filter: blur(18px); border-bottom: 1px solid var(--border);
 }
 .logo { font-weight: 800; letter-spacing: -.02em; }
-.logo span { display: inline-grid; place-items: center; width: 34px; height: 34px; margin-right: 8px;
-  border-radius: 9px; background: var(--wine); font-size: .75rem; }
+.logo span { position: relative; display: inline-grid; place-items: center; width: 34px; height: 34px; margin-right: 8px;
+  border-radius: 9px; background: var(--wine); color: #fff; font-family: "Playfair Display", Georgia, serif; font-size: 1.05rem; font-weight: 700; line-height: 1; }
+.logo span::after { content: ""; position: absolute; width: 5px; height: 5px; border-radius: 50%; background: #d77a92; right: 5px; bottom: 5px; box-shadow: 0 0 8px rgba(215,122,146,.35); }
 nav { display: flex; gap: 28px; }
 nav a { color: var(--muted); font-size: .88rem; transition: .2s; }
 nav a:hover { color: #fff; }
@@ -112,6 +113,13 @@ h2 { font-family: "Playfair Display", Georgia, serif; font-size: clamp(2.2rem, 4
 footer { border-top: 1px solid var(--border); padding: 25px; text-align: center; color: #6f676b; font-size: .7rem; }
 .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
 .reveal.visible { opacity: 1; transform: none; }
+
+/* V13 — Cleaner skill presentation */
+.skill-group { min-width: 0; }
+.skill-group h3 { margin-bottom: 10px; font-size: 1rem; }
+.skill-list { display: flex; flex-wrap: wrap; gap: 7px; }
+.skill-list span { display: inline-flex; align-items: center; padding: 6px 10px; border: 1px solid rgba(255,255,255,.07); border-radius: 7px; background: rgba(255,255,255,.025); color: #c9bec3; font-size: .73rem; line-height: 1.2; transition: .2s ease; }
+.skill-list span:hover { border-color: rgba(169,54,85,.5); background: rgba(127,32,59,.13); color: #f1dbe2; transform: translateY(-1px); }
 
 @media (max-width: 800px) {
   .navbar { padding: 0 22px; }
