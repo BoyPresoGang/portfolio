@@ -80,6 +80,11 @@ h2 { font-family: "Playfair Display", Georgia, serif; font-size: clamp(2.2rem, 4
 .project-card.featured { grid-column: span 2; display: grid; grid-template-columns: 1fr 1fr; }
 .project-top { grid-column: 1 / -1; display: flex; justify-content: space-between; padding: 18px 20px; color: #81767c; font-size: .66rem; font-weight: 800; letter-spacing: .12em; border-bottom: 1px solid var(--border); }
 .project-number { color: #c36b83; }
+.project-image-wrap { min-height: 240px; background: #100e11; overflow: hidden; }
+.project-image { width: 100%; height: 100%; min-height: 240px; display: block; object-fit: cover; object-position: top center; transition: transform .35s ease; }
+.project-card:hover .project-image { transform: scale(1.025); }
+.project-meta { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--border); color: #9f9298; font-size: .76rem; }
+.project-meta strong { color: #d5c9ce; font-weight: 600; }
 .project-placeholder { min-height: 240px; display: grid; place-items: center; text-align: center; padding: 30px;
   background: radial-gradient(circle at 50% 45%, rgba(127,32,59,.38), transparent 58%), #100e11;
   font-family: "Playfair Display"; font-size: 2rem; line-height: 1; letter-spacing: .03em; }
@@ -130,3 +135,31 @@ footer { border-top: 1px solid var(--border); padding: 25px; text-align: center;
 
 .hero-title { margin-top: 22px; color: #f3eef0; font-weight: 800; font-size: 1.15rem; }
 .hero-degree { margin-top: 2px; color: #bd667e; font-size: .84rem; font-weight: 600; }
+
+.project-gallery { background: #100e11; overflow: hidden; }
+.gallery-thumbs {
+  display: flex;
+  gap: 7px;
+  padding: 8px;
+  overflow-x: auto;
+  background: #171318;
+  border-top: 1px solid rgba(255,255,255,.08);
+  scrollbar-width: thin;
+}
+.gallery-thumb {
+  flex: 0 0 74px;
+  width: 74px;
+  height: 52px;
+  padding: 0;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 5px;
+  overflow: hidden;
+  background: #0f0d10;
+  opacity: .62;
+  cursor: pointer;
+  transition: opacity .2s ease, border-color .2s ease, transform .2s ease;
+}
+.gallery-thumb:hover { opacity: .9; transform: translateY(-1px); }
+.gallery-thumb.active { opacity: 1; border-color: #d5a6b7; }
+.gallery-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+.project-gallery .project-image { min-height: 260px; max-height: 360px; object-fit: cover; }

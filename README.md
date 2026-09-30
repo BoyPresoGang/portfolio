@@ -24,3 +24,7 @@ Replace:
 5. Save and wait for GitHub to deploy the site.
 6. Your public URL will normally look like:
    `https://YOUR-USERNAME.github.io/portfolio/`
+
+## Project screenshot galleries
+
+The portfolio includes screenshot galleries for EduTech Mobile and Class Ledger. Class Ledger screenshots use anonymized student labels for privacy.
