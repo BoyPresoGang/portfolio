@@ -28,7 +28,7 @@ a { color: inherit; text-decoration: none; }
 }
 .logo { font-weight: 800; letter-spacing: -.02em; }
 .logo span { position: relative; display: inline-grid; place-items: center; width: 34px; height: 34px; margin-right: 8px;
-  border-radius: 9px; background: var(--wine); color: #fff; font-family: "Playfair Display", Georgia, serif; font-size: 1.05rem; font-weight: 700; line-height: 1; }
+  border-radius: 9px; background: var(--wine); color: #fff; font-family: "Playfair Display", Georgia, serif; font-size: 1.22rem; font-style: italic; font-weight: 700; line-height: 1; }
 .logo span::after { content: ""; position: absolute; width: 5px; height: 5px; border-radius: 50%; background: #d77a92; right: 5px; bottom: 5px; box-shadow: 0 0 8px rgba(215,122,146,.35); }
 nav { display: flex; gap: 28px; }
 nav a { color: var(--muted); font-size: .88rem; transition: .2s; }
@@ -72,7 +72,7 @@ h2 { font-family: "Playfair Display", Georgia, serif; font-size: clamp(2.2rem, 4
 .section-alt > * { max-width: var(--max); margin-left: auto; margin-right: auto; }
 .skills-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
 .skill-card { padding: 28px; border: 1px solid var(--border); border-radius: 14px; background: rgba(255,255,255,.015); transition: .25s; }
-.skill-card:hover { transform: translateY(-5px); border-color: rgba(169,54,85,.5); background: rgba(127,32,59,.08); }
+.skill-card:hover { transform: translateY(-5px); border-color: rgba(169,54,85,.5); background: rgba(127,32,59,.08); box-shadow: 0 12px 30px rgba(0,0,0,.18), 0 0 22px rgba(127,32,59,.08); }
 .skill-icon { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 10px; background: var(--wine-soft); color: #e28ca4; margin-bottom: 20px; }
 .skill-card h3 { margin-bottom: 8px; font-size: 1rem; }
 .skill-card p { color: var(--muted); font-size: .82rem; }
@@ -176,11 +176,16 @@ footer { border-top: 1px solid var(--border); padding: 25px; text-align: center;
 
 /* Education */
 .education-timeline { position: relative; display: grid; gap: 18px; margin-top: 28px; }
-.education-timeline::before { content: ""; position: absolute; left: 116px; top: 10px; bottom: 10px; width: 1px; background: var(--border); }
+.education-timeline::before { content: ""; position: absolute; left: 116px; top: 10px; bottom: 10px; width: 1px; background: linear-gradient(to bottom, transparent, rgba(197,106,135,.34) 12%, var(--border) 45%, rgba(197,106,135,.24) 88%, transparent); }
+.education-item:hover .education-year { color: #df8ba3; text-shadow: 0 0 14px rgba(197,106,135,.16); }
 .education-item { display: grid; grid-template-columns: 100px 1fr; gap: 32px; align-items: start; position: relative; }
 .education-year { padding-top: 24px; color: #c56a87; font-size: .78rem; font-weight: 700; text-align: right; letter-spacing: .03em; }
-.education-card { position: relative; padding: 24px; border: 1px solid var(--border); border-radius: 18px; background: #181419; }
-.education-card::before { content: ""; position: absolute; left: -38px; top: 28px; width: 10px; height: 10px; border: 3px solid #c56a87; border-radius: 50%; background: #0d0b0d; }
+.education-card { position: relative; padding: 24px; border: 1px solid var(--border); border-radius: 18px; background: #181419; overflow: hidden; transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease, background .35s ease; }
+.education-card::after { content: ""; position: absolute; inset: 0; background: linear-gradient(115deg, transparent 20%, rgba(255,255,255,.035) 45%, transparent 70%); transform: translateX(-120%); transition: transform .65s ease; pointer-events: none; }
+.education-card:hover { transform: translateY(-4px); border-color: rgba(197,106,135,.42); background: #1b151a; box-shadow: 0 14px 34px rgba(0,0,0,.22), 0 0 24px rgba(127,32,59,.10); }
+.education-card:hover::after { transform: translateX(120%); }
+.education-card::before { content: ""; position: absolute; left: -24px; top: 28px; width: 10px; height: 10px; border: 3px solid #c56a87; border-radius: 50%; background: #0d0b0d; box-shadow: 0 0 0 0 rgba(197,106,135,.28); transition: box-shadow .35s ease, transform .35s ease; z-index: 2; }
+.education-item:hover .education-card::before { transform: scale(1.08); box-shadow: 0 0 0 6px rgba(197,106,135,.07), 0 0 18px rgba(197,106,135,.22); }
 .education-level { margin: 0 0 8px; color: #c56a87; font-size: .7rem; font-weight: 700; letter-spacing: .12em; }
 .education-card h3 { margin: 0; font-size: 1.08rem; }
 .education-major { margin: 7px 0 0; color: #d5c9ce; font-size: .88rem; }
