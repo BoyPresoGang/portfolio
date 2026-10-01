@@ -37,3 +37,5 @@ V16 updates: fixed education timeline dot/date overlap and added subtle hover, g
 - Added restrained project-card hover polish and screenshot cues.
 - Refined the portfolio assistant greeting and quick prompts.
 - Added availability indicators in the hero and contact section.
+
+V17 updates: Added a four-image StudyMateAI screenshot gallery (Login, AI Tutor, Lecture Notes, Quiz Generator) and changed the Projects grid so all four project cards use the same two-column sizing instead of making EduTech span both columns. Project content now stretches consistently so card links align more cleanly.

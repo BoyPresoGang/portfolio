@@ -1,3 +1,30 @@
+// V21 — cinematic project showcase opening
+const portfolioIntro = document.getElementById("portfolioIntro");
+const introEnter = document.getElementById("introEnter");
+const introSkip = document.getElementById("introSkip");
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function closePortfolioIntro(animate = true) {
+  if (!portfolioIntro || portfolioIntro.classList.contains("is-hidden")) return;
+  portfolioIntro.classList.add("is-opening");
+  sessionStorage.setItem("rommelPortfolioIntroSeen", "true");
+  const delay = animate && !prefersReducedMotion ? 1150 : 0;
+  window.setTimeout(() => {
+    portfolioIntro.classList.add("is-hidden");
+    document.body.classList.remove("intro-active");
+  }, delay);
+}
+
+if (portfolioIntro) {
+  const introSeen = sessionStorage.getItem("rommelPortfolioIntroSeen");
+  if (introSeen || prefersReducedMotion) {
+    portfolioIntro.classList.add("is-hidden");
+    document.body.classList.remove("intro-active");
+  } else {
+    introEnter?.addEventListener("click", () => closePortfolioIntro(true));
+    introSkip?.addEventListener("click", () => closePortfolioIntro(false));
+  }
+}
 const menuToggle = document.querySelector(".menu-toggle");
 const nav = document.querySelector("nav");
 

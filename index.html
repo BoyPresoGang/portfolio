@@ -10,7 +10,91 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="intro-active">
+  <!-- Portfolio opening experience -->
+  <div class="portfolio-intro" id="portfolioIntro" aria-label="Portfolio introduction">
+    <div class="intro-backdrop" aria-hidden="true"></div>
+
+    <div class="intro-strip intro-strip-top" aria-hidden="true">
+      <div class="intro-track intro-track-forward">
+        <figure class="intro-shot"><img src="edutech-00-home.png" alt=""></figure>
+        <figure class="intro-shot"><img src="edutech-02-lessons.png" alt=""></figure>
+        <figure class="intro-shot"><img src="class-ledger-dashboard.png" alt=""></figure>
+        <figure class="intro-shot"><img src="studymate-01-login.png" alt=""></figure>
+        <figure class="intro-shot"><img src="edutech-03-quiz.png" alt=""></figure>
+        <figure class="intro-shot"><img src="class-ledger-04-grade-entry.png" alt=""></figure>
+        <figure class="intro-shot"><img src="studymate-03-lecture-notes.png" alt=""></figure>
+        <figure class="intro-shot"><img src="edutech-04-progress.png" alt=""></figure>
+        <figure class="intro-shot"><img src="studymate-04-quiz-generator.png" alt=""></figure>
+        <figure class="intro-shot"><img src="class-ledger-06-gwa-report.png" alt=""></figure>
+        <figure class="intro-shot"><img src="edutech-00-home.png" alt=""></figure>
+        <figure class="intro-shot"><img src="edutech-02-lessons.png" alt=""></figure>
+        <figure class="intro-shot"><img src="class-ledger-dashboard.png" alt=""></figure>
+        <figure class="intro-shot"><img src="studymate-01-login.png" alt=""></figure>
+        <figure class="intro-shot"><img src="edutech-03-quiz.png" alt=""></figure>
+        <figure class="intro-shot"><img src="class-ledger-04-grade-entry.png" alt=""></figure>
+        <figure class="intro-shot"><img src="studymate-03-lecture-notes.png" alt=""></figure>
+        <figure class="intro-shot"><img src="edutech-04-progress.png" alt=""></figure>
+        <figure class="intro-shot"><img src="studymate-04-quiz-generator.png" alt=""></figure>
+        <figure class="intro-shot"><img src="class-ledger-06-gwa-report.png" alt=""></figure>
+      </div>
+    </div>
+
+    <div class="intro-center">
+      <div class="intro-copy">
+        <p class="intro-kicker">ROMMEL JOHN M. AGOLITO</p>
+        <h1>A closer look at what I build.</h1>
+        <p class="intro-subtitle">Web · Mobile · Desktop · Software</p>
+      </div>
+
+      <button class="intro-enter" id="introEnter" type="button" aria-label="Enter Rommel's portfolio">
+        <span class="intro-enter-ring" aria-hidden="true"></span>
+        <span class="intro-enter-icon" aria-hidden="true">↗</span>
+        <span class="intro-enter-label">ENTER</span>
+      </button>
+
+      <p class="intro-hint">Tap to explore</p>
+    </div>
+
+    <div class="intro-strip intro-strip-bottom" aria-hidden="true">
+      <div class="intro-track intro-track-reverse">
+        <figure class="intro-shot"><img src="class-ledger-05-grade-summary.png" alt=""></figure>
+        <figure class="intro-shot"><img src="studymate-02-ai-tutor.png" alt=""></figure>
+        <figure class="intro-shot"><img src="edutech-01-courses.png" alt=""></figure>
+        <figure class="intro-shot"><img src="class-ledger-02-subjects.png" alt=""></figure>
+        <figure class="intro-shot"><img src="studymate-04-quiz-generator.png" alt=""></figure>
+        <figure class="intro-shot"><img src="edutech-04-progress.png" alt=""></figure>
+        <figure class="intro-shot"><img src="class-ledger-03-enrollment-weights.png" alt=""></figure>
+        <figure class="intro-shot"><img src="studymate-03-lecture-notes.png" alt=""></figure>
+        <figure class="intro-shot"><img src="edutech-03-quiz.png" alt=""></figure>
+        <figure class="intro-shot"><img src="class-ledger-06-gwa-report.png" alt=""></figure>
+        <figure class="intro-shot"><img src="class-ledger-05-grade-summary.png" alt=""></figure>
+        <figure class="intro-shot"><img src="studymate-02-ai-tutor.png" alt=""></figure>
+        <figure class="intro-shot"><img src="edutech-01-courses.png" alt=""></figure>
+        <figure class="intro-shot"><img src="class-ledger-02-subjects.png" alt=""></figure>
+        <figure class="intro-shot"><img src="studymate-04-quiz-generator.png" alt=""></figure>
+        <figure class="intro-shot"><img src="edutech-04-progress.png" alt=""></figure>
+        <figure class="intro-shot"><img src="class-ledger-03-enrollment-weights.png" alt=""></figure>
+        <figure class="intro-shot"><img src="studymate-03-lecture-notes.png" alt=""></figure>
+        <figure class="intro-shot"><img src="edutech-03-quiz.png" alt=""></figure>
+        <figure class="intro-shot"><img src="class-ledger-06-gwa-report.png" alt=""></figure>
+      </div>
+    </div>
+
+    <div class="intro-vignette" aria-hidden="true"></div>
+    <button class="intro-skip" id="introSkip" type="button">Skip intro</button>
+  </div>
+
+  <!-- Ambient background: subtle animated tech atmosphere -->
+  <div class="ambient-bg" aria-hidden="true">
+    <div class="ambient-grid"></div>
+    <div class="ambient-orb ambient-orb-one"></div>
+    <div class="ambient-orb ambient-orb-two"></div>
+    <div class="ambient-orb ambient-orb-three"></div>
+    <div class="ambient-scan"></div>
+    <div class="ambient-points"></div>
+  </div>
+
   <div class="bg-glow glow-one"></div>
   <div class="bg-glow glow-two"></div>
 
@@ -199,17 +283,18 @@
       </div>
 
       <div class="projects-grid">
-        <article class="project-card featured reveal">
+        <article class="project-card reveal">
           <div class="project-top">
             <span class="project-number">01</span>
             <span class="project-type">CAPSTONE · MOBILE</span>
           </div>
           <div class="project-gallery" data-gallery="edutech">
             <div class="project-image-wrap">
-              <img src="edutech-01-courses.png" alt="EduTech Mobile courses screen" class="project-image gallery-main">
+              <img src="edutech-00-home.png" alt="EduTech Mobile opening screen" class="project-image gallery-main">
             </div>
             <div class="gallery-thumbs" aria-label="EduTech Mobile screenshots">
-              <button class="gallery-thumb active" type="button" data-image="edutech-01-courses.png" data-alt="EduTech Mobile courses screen"><img src="edutech-01-courses.png" alt=""></button>
+              <button class="gallery-thumb active" type="button" data-image="edutech-00-home.png" data-alt="EduTech Mobile opening screen"><img src="edutech-00-home.png" alt=""></button>
+              <button class="gallery-thumb" type="button" data-image="edutech-01-courses.png" data-alt="EduTech Mobile courses screen"><img src="edutech-01-courses.png" alt=""></button>
               <button class="gallery-thumb" type="button" data-image="edutech-02-lessons.png" data-alt="EduTech Mobile lessons screen"><img src="edutech-02-lessons.png" alt=""></button>
               <button class="gallery-thumb" type="button" data-image="edutech-03-quiz.png" data-alt="EduTech Mobile quiz screen"><img src="edutech-03-quiz.png" alt=""></button>
               <button class="gallery-thumb" type="button" data-image="edutech-04-progress.png" data-alt="EduTech Mobile progress screen"><img src="edutech-04-progress.png" alt=""></button>
@@ -264,7 +349,17 @@
             <span class="project-number">03</span>
             <span class="project-type">DESKTOP · AI</span>
           </div>
-          <div class="project-placeholder">STUDYMATE<br><small>AI STUDY ASSISTANT · UI IN PROGRESS</small></div>
+          <div class="project-gallery" data-gallery="studymate">
+            <div class="project-image-wrap">
+              <img src="studymate-01-login.png" alt="StudyMateAI login screen" class="project-image gallery-main">
+            </div>
+            <div class="gallery-thumbs" aria-label="StudyMateAI screenshots">
+              <button class="gallery-thumb active" type="button" data-image="studymate-01-login.png" data-alt="StudyMateAI login screen"><img src="studymate-01-login.png" alt=""></button>
+              <button class="gallery-thumb" type="button" data-image="studymate-02-ai-tutor.png" data-alt="StudyMateAI AI Tutor screen"><img src="studymate-02-ai-tutor.png" alt=""></button>
+              <button class="gallery-thumb" type="button" data-image="studymate-03-lecture-notes.png" data-alt="StudyMateAI Lecture Notes screen"><img src="studymate-03-lecture-notes.png" alt=""></button>
+              <button class="gallery-thumb" type="button" data-image="studymate-04-quiz-generator.png" data-alt="StudyMateAI Quiz Generator screen"><img src="studymate-04-quiz-generator.png" alt=""></button>
+            </div>
+          </div>
           <div class="project-content">
             <h3>StudyMateAI</h3>
             <p>
@@ -273,7 +368,7 @@
               The UI is currently being refined before the project is showcased.
             </p>
             <div class="project-meta"><strong>Role:</strong> Sole Developer</div>
-            <div class="tags"><span>Python</span><span>PySide6</span><span>SQLite</span></div>
+            <div class="tags"><span>Python</span><span>PySide6</span><span>SQLite</span><span>VS Code</span><span>GitHub</span><span>PyInstaller</span><span>pytest</span><span>Google AI Studio</span></div>
             <a href="#" class="project-link">Coming Soon ↗</a>
           </div>
         </article>
@@ -357,14 +452,18 @@
   <!-- Portfolio Assistant -->
   <div class="portfolio-assistant" id="portfolioAssistant">
     <button class="assistant-launcher" id="assistantLauncher" type="button" aria-label="Open portfolio assistant" aria-expanded="false">
-      <span class="assistant-launcher-icon">✦</span>
+      <span class="assistant-launcher-icon" aria-hidden="true">
+        <span class="robot-head"><span class="robot-antenna"></span><span class="robot-eye robot-eye-left"></span><span class="robot-eye robot-eye-right"></span><span class="robot-mouth"></span></span>
+      </span>
       <span class="assistant-pulse" aria-hidden="true"></span>
     </button>
 
     <section class="assistant-panel" id="assistantPanel" aria-label="Portfolio assistant" aria-hidden="true">
       <div class="assistant-header">
         <div class="assistant-brand">
-          <div class="assistant-avatar">✦</div>
+          <div class="assistant-avatar" aria-hidden="true">
+          <span class="robot-head robot-head-small"><span class="robot-antenna"></span><span class="robot-eye robot-eye-left"></span><span class="robot-eye robot-eye-right"></span><span class="robot-mouth"></span></span>
+        </div>
           <div>
             <strong>Portfolio Assistant</strong>
             <span><i></i> Online · Knows this portfolio</span>
