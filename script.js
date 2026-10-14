@@ -26,13 +26,43 @@ if (portfolioIntro) {
   }
 }
 const menuToggle = document.querySelector(".menu-toggle");
-const nav = document.querySelector("nav");
+const nav = document.getElementById("nav");
+const navLinks = [...document.querySelectorAll("#nav a[href^='#']")];
 
-menuToggle.addEventListener("click", () => nav.classList.toggle("open"));
+function setNavigationOpen(open) {
+  nav.classList.toggle("open", open);
+  menuToggle.setAttribute("aria-expanded", String(open));
+  menuToggle.setAttribute("aria-label", open ? "Close navigation menu" : "Open navigation menu");
+  menuToggle.textContent = open ? "×" : "☰";
+}
 
-document.querySelectorAll("nav a").forEach(link => {
-  link.addEventListener("click", () => nav.classList.remove("open"));
+menuToggle.addEventListener("click", () => setNavigationOpen(!nav.classList.contains("open")));
+navLinks.forEach(link => {
+  link.addEventListener("click", () => setNavigationOpen(false));
 });
+
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape" && nav.classList.contains("open")) {
+    setNavigationOpen(false);
+    menuToggle.focus();
+  }
+});
+
+// Keep the navigation state aligned with the section currently in view.
+const navSections = navLinks
+  .map(link => document.querySelector(link.getAttribute("href")))
+  .filter(Boolean);
+const activeSectionObserver = new IntersectionObserver(entries => {
+  const visibleEntries = entries.filter(entry => entry.isIntersecting)
+    .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+  if (!visibleEntries.length) return;
+  const activeId = visibleEntries[0].target.id;
+  navLinks.forEach(link => {
+    if (link.getAttribute("href") === `#${activeId}`) link.setAttribute("aria-current", "location");
+    else link.removeAttribute("aria-current");
+  });
+}, { rootMargin: "-20% 0px -60% 0px", threshold: [0, 0.15, 0.35, 0.6] });
+navSections.forEach(section => activeSectionObserver.observe(section));
 
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -59,11 +89,55 @@ const assistantInput = document.getElementById("assistantInput");
 const assistantMessages = document.getElementById("assistantMessages");
 const assistantSuggestions = document.getElementById("assistantSuggestions");
 
+const assistantSuggestionSets = {
+  home: [["Explore projects", "What projects has Rommel built?"], ["Tech stack", "What technologies does Rommel use?"], ["Contact", "How can I contact Rommel?"]],
+  about: [["About Rommel", "Who is Rommel?"], ["Career focus", "What kind of software does Rommel focus on?"], ["Explore projects", "What projects has Rommel built?"]],
+  "what-i-do": [["Development work", "What kind of development does Rommel do?"], ["Project roles", "What were Rommel's roles in his projects?"], ["Tech stack", "What technologies does Rommel use?"]],
+  skills: [["Programming languages", "What programming languages does Rommel know?"], ["Frameworks", "What frameworks and tools does Rommel use?"], ["See projects", "What projects has Rommel built?"]],
+  projects: [["StudyMateAI", "Tell me about StudyMateAI"], ["EduTech Mobile", "Tell me about EduTech Mobile"], ["Class Ledger", "Tell me about Class Ledger"], ["Water refilling system", "Tell me about the Water Refilling Station Management System"]],
+  education: [["Education", "What is Rommel's education?"], ["Project experience", "What project roles has Rommel had?"], ["Download CV", "How can I download Rommel's CV?"]],
+  contact: [["Email", "How can I contact Rommel?"], ["GitHub", "What is Rommel's GitHub?"], ["CV", "Where can I find Rommel's CV?"]]
+};
+
+function getCurrentPortfolioSection() {
+  const sections = [...document.querySelectorAll("main section[id]")];
+  const targetLine = window.innerHeight * 0.42;
+  for (const section of sections) {
+    const rect = section.getBoundingClientRect();
+    if (rect.top <= targetLine && rect.bottom > targetLine) return section.id;
+  }
+  return "home";
+}
+
+function refreshAssistantSuggestions() {
+  if (!assistantMessages) return;
+  let container = document.getElementById("assistantSuggestions");
+  if (!container) {
+    container = document.createElement("div");
+    container.className = "assistant-suggestions";
+    container.id = "assistantSuggestions";
+    assistantMessages.appendChild(container);
+  }
+  container.replaceChildren();
+  const choices = assistantSuggestionSets[getCurrentPortfolioSection()] || assistantSuggestionSets.home;
+  choices.forEach(([label, question]) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.textContent = label;
+    button.dataset.question = question;
+    button.addEventListener("click", () => answerAssistantQuestion(question));
+    container.appendChild(button);
+  });
+}
+
 function setAssistantOpen(open) {
   assistant.classList.toggle("open", open);
   assistantLauncher.setAttribute("aria-expanded", String(open));
   assistantPanel.setAttribute("aria-hidden", String(!open));
-  if (open) setTimeout(() => assistantInput.focus(), 180);
+  if (open) {
+    refreshAssistantSuggestions();
+    setTimeout(() => assistantInput.focus(), 180);
+  }
 }
 
 assistantLauncher.addEventListener("click", () => setAssistantOpen(!assistant.classList.contains("open")));
@@ -161,15 +235,42 @@ function showTyping() {
   assistantMessages.scrollTop = assistantMessages.scrollHeight;
 }
 
+function addAssistantActions(question) {
+  const q = normalizeAssistantText(question);
+  let actions = [];
+  if (/(project|edutech|class ledger|studymate|water refilling)/.test(q)) actions = [["View projects", "#projects"]];
+  else if (/(skill|technology|tech stack|programming|framework)/.test(q)) actions = [["View skills", "#skills"], ["View projects", "#projects"]];
+  else if (/(education|school|degree|college)/.test(q)) actions = [["View education", "#education"]];
+  else if (/(contact|email|github|hire|reach)/.test(q)) actions = [["Go to contact", "#contact"]];
+  else if (/(cv|resume|curriculum vitae|download)/.test(q)) actions = [["Go to top", "#home"], ["Go to contact", "#contact"]];
+  if (!actions.length) return;
+  const row = document.createElement("div");
+  row.className = "assistant-suggestions assistant-action-links";
+  actions.forEach(([label, href]) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.textContent = label;
+    button.addEventListener("click", () => {
+      setAssistantOpen(false);
+      document.querySelector(href)?.scrollIntoView({ behavior: prefersReducedMotion ? "auto" : "smooth", block: "start" });
+    });
+    row.appendChild(button);
+  });
+  assistantMessages.appendChild(row);
+  assistantMessages.scrollTop = assistantMessages.scrollHeight;
+}
+
 function answerAssistantQuestion(question) {
   const cleanQuestion = question.trim();
   if (!cleanQuestion) return;
   addAssistantMessage(cleanQuestion, "user");
-  if (assistantSuggestions) assistantSuggestions.remove();
+  document.getElementById("assistantSuggestions")?.remove();
   showTyping();
   setTimeout(() => {
     document.getElementById("assistantTyping")?.remove();
     addAssistantMessage(getAssistantAnswer(cleanQuestion), "bot");
+    addAssistantActions(cleanQuestion);
+    refreshAssistantSuggestions();
   }, 450);
 }
 
@@ -180,6 +281,19 @@ assistantForm.addEventListener("submit", (event) => {
   answerAssistantQuestion(question);
 });
 
-document.querySelectorAll(".assistant-suggestions button").forEach(button => {
-  button.addEventListener("click", () => answerAssistantQuestion(button.dataset.question));
+
+// V31: Switch the Water Refilling Station project preview using its screenshot thumbnails.
+document.addEventListener('click', function (event) {
+  const thumb = event.target.closest('.project-thumb[data-project-image]');
+  if (!thumb) return;
+  const gallery = thumb.closest('.project-gallery-preview');
+  if (!gallery) return;
+  const preview = gallery.querySelector('.project-preview-image');
+  if (!preview) return;
+  preview.src = thumb.dataset.projectImage;
+  gallery.querySelectorAll('.project-thumb').forEach(button => {
+    const active = button === thumb;
+    button.classList.toggle('is-active', active);
+    button.setAttribute('aria-pressed', active ? 'true' : 'false');
+  });
 });

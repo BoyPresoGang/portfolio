@@ -39,3 +39,15 @@ V16 updates: fixed education timeline dot/date overlap and added subtle hover, g
 - Added availability indicators in the hero and contact section.
 
 V17 updates: Added a four-image StudyMateAI screenshot gallery (Login, AI Tutor, Lecture Notes, Quiz Generator) and changed the Projects grid so all four project cards use the same two-column sizing instead of making EduTech span both columns. Project content now stretches consistently so card links align more cleanly.
+
+
+## V29 — Mobile, accessibility, and performance refinement
+
+- Added a keyboard-accessible skip-to-content link.
+- Improved visible keyboard focus and current navigation states.
+- Increased touch target sizing for mobile navigation, gallery controls, and actions.
+- Tuned the assistant and case-study dialog for short mobile viewports and safe-area insets.
+- Lazy-loaded below-the-fold content images and enabled asynchronous image decoding; the profile photo remains high priority.
+- Added hover-device fallbacks, reduced-motion handling, and forced-colors focus support.
+
+Please test on desktop and a narrow mobile viewport before publishing.
