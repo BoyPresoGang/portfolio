@@ -46,9 +46,9 @@ a { color: inherit; text-decoration: none; }
   backdrop-filter: blur(18px); border-bottom: 1px solid var(--border);
 }
 .logo { font-weight: 800; letter-spacing: -.02em; }
-.logo span { position: relative; display: inline-grid; place-items: center; width: 34px; height: 34px; margin-right: 8px;
+.logo .logo-mark { position: relative; display: inline-grid; place-items: center; width: 34px; height: 34px; margin-right: 8px;
   border-radius: 9px; background: var(--wine); color: #fff; font-family: "Playfair Display", Georgia, serif; font-size: 1.22rem; font-style: italic; font-weight: 700; line-height: 1; }
-.logo span::after { content: ""; position: absolute; width: 5px; height: 5px; border-radius: 50%; background: #d77a92; right: 5px; bottom: 5px; box-shadow: 0 0 8px rgba(215,122,146,.35); }
+.logo .logo-mark::after { content: ""; position: absolute; width: 5px; height: 5px; border-radius: 50%; background: #d77a92; right: 5px; bottom: 5px; box-shadow: 0 0 8px rgba(215,122,146,.35); }
 nav { display: flex; gap: 28px; }
 nav a { position: relative; color: var(--muted); font-size: .88rem; transition: color .2s ease; padding: 8px 0; }
 nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 1px; height: 2px; border-radius: 2px; background: var(--wine-light); transform: scaleX(0); transform-origin: left; transition: transform .22s ease; }
@@ -863,3 +863,56 @@ nav a[aria-current="location"]::after { transform: scaleX(1); }
 .project-thumb:focus-visible { outline:2px solid #f2a7bd; outline-offset:2px; }
 @media (max-width:600px) { .project-thumb { flex-basis:68px; height:44px; } }
 @media (prefers-reduced-motion:reduce) { .project-preview-image,.project-thumb { transition:none; } }
+
+/* V34: branded clickable logo and reliable active navigation */
+.logo { display:inline-flex; align-items:center; gap:10px; flex-shrink:0; text-decoration:none; }
+.logo .logo-mark { width:42px; height:42px; margin:0; border-radius:12px; display:grid; place-items:center; background:linear-gradient(145deg,#8f2347,#64152f); color:#fff; box-shadow:0 5px 18px rgba(112,24,56,.24), inset 0 1px 0 rgba(255,255,255,.14); transition:transform .2s ease, box-shadow .2s ease; }
+.logo .logo-mark::after { display:none; }
+.logo .logo-mark svg { width:100%; height:100%; padding:5px; }
+.logo-wordmark { color:#f7f0f3; font-size:1.02rem; font-weight:700; letter-spacing:-.035em; white-space:nowrap; }
+.logo-wordmark b { color:#e6a0b5; font-weight:800; }
+.logo:hover .logo-mark, .logo:focus-visible .logo-mark { transform:translateY(-1px); box-shadow:0 7px 22px rgba(112,24,56,.38), inset 0 1px 0 rgba(255,255,255,.18); }
+nav a[aria-current="location"] { color:#f2bdcc; }
+nav a[aria-current="location"]::after { transform:scaleX(1); }
+@media (max-width:800px) {
+  .logo { gap:8px; }
+  .logo .logo-mark { width:38px; height:38px; border-radius:11px; }
+  .logo-wordmark { font-size:.96rem; }
+}
+@media (prefers-reduced-motion:reduce) { .logo .logo-mark { transition:none; } }
+
+
+/* V35: give the clickable wordmark its intended subtitle lockup */
+.logo { align-items:center; }
+.logo-copy { display:flex; flex-direction:column; justify-content:center; gap:2px; min-width:0; line-height:1.1; }
+.logo-wordmark { display:block; line-height:1.1; }
+.logo-subtext { display:block; color:#b7a6ae; font-size:.64rem; font-weight:500; letter-spacing:.035em; line-height:1.25; white-space:nowrap; }
+@media (max-width:800px) {
+  .logo-copy { gap:2px; }
+  .logo-subtext { font-size:.59rem; letter-spacing:.02em; }
+}
+@media (max-width:420px) {
+  .logo-wordmark { font-size:.88rem; }
+  .logo-subtext { font-size:.53rem; }
+}
+
+
+/* V36: use the custom standalone burgundy R. logo mark */
+.logo .logo-mark {
+  overflow: hidden;
+  padding: 0;
+  background: #16080f;
+  border: 1px solid rgba(232, 105, 146, .42);
+  box-shadow: 0 5px 18px rgba(112, 24, 56, .26), inset 0 1px 0 rgba(255,255,255,.08);
+}
+.logo .logo-mark img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+.logo:hover .logo-mark,
+.logo:focus-visible .logo-mark {
+  box-shadow: 0 7px 24px rgba(190, 44, 96, .34), 0 0 0 2px rgba(230,160,181,.10);
+}

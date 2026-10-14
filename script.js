@@ -38,7 +38,13 @@ function setNavigationOpen(open) {
 
 menuToggle.addEventListener("click", () => setNavigationOpen(!nav.classList.contains("open")));
 navLinks.forEach(link => {
-  link.addEventListener("click", () => setNavigationOpen(false));
+  link.addEventListener("click", () => {
+    setNavigationOpen(false);
+    navLinks.forEach(item => {
+      if (item === link) item.setAttribute("aria-current", "location");
+      else item.removeAttribute("aria-current");
+    });
+  });
 });
 
 document.addEventListener("keydown", event => {
@@ -52,17 +58,28 @@ document.addEventListener("keydown", event => {
 const navSections = navLinks
   .map(link => document.querySelector(link.getAttribute("href")))
   .filter(Boolean);
-const activeSectionObserver = new IntersectionObserver(entries => {
-  const visibleEntries = entries.filter(entry => entry.isIntersecting)
-    .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-  if (!visibleEntries.length) return;
-  const activeId = visibleEntries[0].target.id;
+
+function updateActiveNavigation() {
+  const marker = window.scrollY + Math.min(window.innerHeight * 0.32, 240);
+  let activeSection = navSections[0];
+  for (const section of navSections) {
+    if (section.offsetTop <= marker) activeSection = section;
+  }
+  if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 4) {
+    activeSection = navSections[navSections.length - 1];
+  }
   navLinks.forEach(link => {
-    if (link.getAttribute("href") === `#${activeId}`) link.setAttribute("aria-current", "location");
-    else link.removeAttribute("aria-current");
+    if (activeSection && link.getAttribute("href") === `#${activeSection.id}`) {
+      link.setAttribute("aria-current", "location");
+    } else {
+      link.removeAttribute("aria-current");
+    }
   });
-}, { rootMargin: "-20% 0px -60% 0px", threshold: [0, 0.15, 0.35, 0.6] });
-navSections.forEach(section => activeSectionObserver.observe(section));
+}
+window.addEventListener("scroll", updateActiveNavigation, { passive: true });
+window.addEventListener("resize", updateActiveNavigation);
+window.addEventListener("load", updateActiveNavigation);
+updateActiveNavigation();
 
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
