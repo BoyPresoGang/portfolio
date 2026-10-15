@@ -1,4 +1,4 @@
-Portfolio V16
+Portfolio V38
 
 # Rommel John M. Agolito — Portfolio
 
@@ -51,3 +51,37 @@ V17 updates: Added a four-image StudyMateAI screenshot gallery (Login, AI Tutor,
 - Added hover-device fallbacks, reduced-motion handling, and forced-colors focus support.
 
 Please test on desktop and a narrow mobile viewport before publishing.
+
+
+## V38 — Premium visual polish
+
+- Refined the burgundy/obsidian palette, lighting, spacing, and typography.
+- Improved navigation, buttons, cards, project showcases, contact area, assistant, and case-study surfaces.
+- Kept the existing logo, intro image strips, galleries, assistant interactions, and hard/soft skills.
+- Updated the Water Refilling Station description to reflect the completed project.
+
+
+## V39 — Hero and intro refinement
+
+- Added a standalone custom logo mark to the intro composition.
+- Improved intro text separation, small-screen spacing, and the ENTER control proportions.
+- Refined hero hierarchy and added a subtle scroll-to-About cue.
+- Added a low-intensity pointer-following light on the profile card for fine-pointer devices only.
+- Kept the current color palette unchanged for the final consolidated visual review.
+
+
+## V40 — Project showcase refinement
+
+- Added image-stage counters and discoverable View Case Study overlays to project cards.
+- Standardized screenshot framing and responsive thumbnail navigation across all projects.
+- Expanded the Water Refilling Station gallery to use the same main-image and thumbnail structure.
+- Case study dialogs now show project type, screenshot count, screen counter, and a clearer overview hierarchy.
+- Included Water Refilling Station screenshots in its case study and updated its note to reflect completion.
+
+
+## V41 — Final visual consistency pass
+
+- Consolidated colors to a black-cherry, muted-wine, antique-rose, and warm-ivory palette.
+- Harmonized typography, navigation states, borders, buttons, cards, screenshots, skills, education, contact, assistant, and case-study dialogs.
+- Reduced competing pink glows and grid intensity for a more restrained, cohesive premium appearance.
+- Preserved the custom logo, intro animation, screenshot strips, project galleries, modal interactions, assistant, and hard/soft skills content.

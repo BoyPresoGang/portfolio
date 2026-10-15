@@ -187,7 +187,7 @@ const portfolioAnswers = [
   },
   {
     keys: ["water refilling", "refilling station", "water system", "management system"],
-    answer: "The Water Refilling Station Management System is an in-development project where Rommel is the Primary Developer. It focuses on customer, product, order, and delivery records using Laravel, PHP, and MySQL."
+    answer: "The Water Refilling Station Management System is a completed web-based management project where Rommel is the Primary Developer. It organizes customer, product, order, and delivery records using Laravel, PHP, and MySQL."
   },
   {
     keys: ["skill", "skills", "technology", "technologies", "tech stack", "programming language", "languages"],
@@ -299,18 +299,22 @@ assistantForm.addEventListener("submit", (event) => {
 });
 
 
-// V31: Switch the Water Refilling Station project preview using its screenshot thumbnails.
-document.addEventListener('click', function (event) {
-  const thumb = event.target.closest('.project-thumb[data-project-image]');
-  if (!thumb) return;
-  const gallery = thumb.closest('.project-gallery-preview');
-  if (!gallery) return;
-  const preview = gallery.querySelector('.project-preview-image');
-  if (!preview) return;
-  preview.src = thumb.dataset.projectImage;
-  gallery.querySelectorAll('.project-thumb').forEach(button => {
-    const active = button === thumb;
-    button.classList.toggle('is-active', active);
-    button.setAttribute('aria-pressed', active ? 'true' : 'false');
+
+
+// V39 — subtle cursor light on the hero profile card (fine pointers only).
+const heroProfileCard = document.querySelector(".hero-card");
+if (heroProfileCard && window.matchMedia("(pointer: fine)").matches && !prefersReducedMotion) {
+  heroProfileCard.addEventListener("pointermove", (event) => {
+    const rect = heroProfileCard.getBoundingClientRect();
+    const x = Math.max(0, Math.min(100, ((event.clientX - rect.left) / rect.width) * 100));
+    const y = Math.max(0, Math.min(100, ((event.clientY - rect.top) / rect.height) * 100));
+    heroProfileCard.style.setProperty("--pointer-x", `${x}%`);
+    heroProfileCard.style.setProperty("--pointer-y", `${y}%`);
+    heroProfileCard.classList.add("is-pointer-active");
   });
-});
+  heroProfileCard.addEventListener("pointerleave", () => {
+    heroProfileCard.classList.remove("is-pointer-active");
+    heroProfileCard.style.removeProperty("--pointer-x");
+    heroProfileCard.style.removeProperty("--pointer-y");
+  });
+}
